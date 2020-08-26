@@ -7,3 +7,4 @@ class pdf_file_form(forms.ModelForm):
     class Meta():
         model = pdf_files
         fields='__all__'
+

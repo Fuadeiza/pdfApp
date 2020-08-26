@@ -7,8 +7,9 @@
 </head>
 <body>
     <div class="container">
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" name='myFile'>
         {% csrf_token %}
+        {{form.media}}
         {{form.as_p}}
         <input type="submit" class="btn btn-primary"value="Convert">
     </form>

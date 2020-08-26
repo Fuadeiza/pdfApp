@@ -41,7 +41,8 @@ def concatenate(paths, output):
 
 
 #This function rotates a certain page of the  pdf by 90degrees right.
-def rotate(path, bad_page, output):
+def rotate(path, bad_page):
+    output=path[:-4]
     reader = PdfReader(path)
     writer = PdfWriter()
     pages = reader.pages
@@ -50,7 +51,6 @@ def rotate(path, bad_page, output):
             pages[bad_page].Rotate = 90
             writer.addpage(pages[bad_page])
     writer.write(output)
-
 
 # rotate(r'C:\Users\DELL\Python stuffs\pdf pypy\new-sample.pdf', 3, r'C:\Users\DELL\Python stuffs\pdf pypy\new_rotate_sample.pdf')
 
@@ -70,3 +70,23 @@ def watermarker(path, watermark, output):
 # watermarker(r'C:\Users\DELL\Python stuffs\pdf pypy\new-sample.pdf', r'C:\Users\DELL\Python stuffs\pdf pypy\new_rotate_sample.pdf', r'C:\Users\DELL\Python stuffs\pdf pypy\watermark.pdf')
 
 
+def rotate_all_page(path):
+    output=path[:-4] +'_converted.pdf'
+    reader = PdfReader(path)
+    writer = PdfWriter()
+    pages = reader.pages
+    for page in range(len(pages)):
+        pages[page].Rotate = 90
+        writer.addpage(pages[page])
+    writer.write(output)
+    return(output)
+    print("It worked ooo")
+
+
+rotate_all_page(r'C:\Users\DELL\Python stuffs\pdf pypy\new-sample.pdf')
+
+# C:\Users\DELL\Desktop\MyDjangoEnv\pdf_App\pdfpdf\media\media\pdf
+
+
+
+#  {'pdf_file': [<InMemoryUploadedFile: sample.pdf (application/pdf)>]}
